@@ -19,9 +19,14 @@ package de.gishmo.gwt.example.nalu.simpleapplication.client.data.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
+import com.google.gwt.core.client.Scheduler;
 
 import de.gishmo.gwt.example.nalu.simpleapplication.client.data.BeanFactory;
 import de.gishmo.gwt.example.nalu.simpleapplication.client.data.model.dto.FlightHoursSummary;
+import de.gishmo.gwt.example.nalu.simpleapplication.client.ui.dashboard.DashboardController;
+import gwt.material.design.client.ui.MaterialLoader;
 
 public class FakedService {
 
@@ -51,8 +56,15 @@ public class FakedService {
 		return summary;
 	}
 
-	public List<FlightHoursSummary> getFlightHoursSummaries() {
-		return summaries;
+	public CompletableFuture<List<FlightHoursSummary>> getFlightHoursSummaries() {
+		CompletableFuture<List<FlightHoursSummary>> cf = new CompletableFuture<>();
+		
+    	Scheduler.get().scheduleFixedDelay(() -> {
+    		cf.complete(summaries);
+        	return false;
+    	}, 1500);
+		
+		return cf;
 	}
 
 }

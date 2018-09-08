@@ -139,6 +139,11 @@
       <artifactId>nalu-plugin-gwt-processor</artifactId>
       <version>${nalu.version}</version>
     </dependency>
+    <dependency>
+    <groupId>com.ekotrope</groupId>
+    <artifactId>gwt-completablefuture</artifactId>
+    <version>1.0.0</version>
+    </dependency>
   </dependencies>
 
   <build>

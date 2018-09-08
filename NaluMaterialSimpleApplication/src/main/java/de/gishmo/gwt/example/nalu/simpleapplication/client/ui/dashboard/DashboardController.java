@@ -1,6 +1,8 @@
 package de.gishmo.gwt.example.nalu.simpleapplication.client.ui.dashboard;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
 import com.github.mvp4g.nalu.client.component.AbstractComponentController;
 import com.github.mvp4g.nalu.client.component.annotation.Controller;
@@ -27,11 +29,17 @@ public class DashboardController extends
     @Override
     public void doRefresh() {
     	MaterialLoader.progress(true);
-    	Scheduler.get().scheduleFixedDelay(() -> {
-        	List<FlightHoursSummary> data = this.context.getFakedService().getFlightHoursSummaries();
-        	DashboardController.this.component.updateFlightHourSummaryTable(data);
-        	MaterialLoader.progress(false);
-        	return false;
-    	}, 1500);
+    	
+    	CompletableFuture<List<FlightHoursSummary>> cf1 = this.context.getFakedService().getFlightHoursSummaries();
+    	
+//    	cf1.thenAccept(r -> {
+//    		DashboardController.this.component.updateFlightHourSummaryTable(r);
+//    		MaterialLoader.progress(false);
+//    	});
+    	
+    	CompletableFuture.allOf(cf1).thenAccept(dummy -> {
+    		DashboardController.this.component.updateFlightHourSummaryTable(cf1.join());
+    		MaterialLoader.progress(false);
+    	});    	
     }
 }
