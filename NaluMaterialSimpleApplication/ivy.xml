@@ -1,0 +1,34 @@
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="hello-ivy"/>
+    <dependencies>
+    
+        <dependency org="com.google.gwt" name="gwt-user" rev="2.8.2-rx1"/>
+        <dependency org="com.google.gwt" name="gwt-dev" rev="2.8.2-rx1" />
+        <dependency org="com.google.gwt" name="gwt-codeserver" rev="2.8.2-rx1"/>
+		<dependency org="com.google.gwt" name="gwt-servlet" rev="2.8.2-rx1"/>
+        
+
+        <dependency org="com.github.gwtmaterialdesign" name="gwt-material" rev="2.1.1" />
+    	<dependency org="com.github.gwtmaterialdesign" name="gwt-material-themes" rev="2.1.1"/>
+		<dependency org="com.github.gwtmaterialdesign" name="gwt-material-addins" rev="2.1.1"/>
+		<dependency org="com.github.gwtmaterialdesign" name="gwt-material-table" rev="2.1.1"/>
+	
+        
+
+   		<dependency org="org.gwtproject.event" name="gwt-event" rev="HEAD-SNAPSHOT" transitive="false"/>
+
+<!-- Los -processor de Nalu fallan por:
+	org.gwtproject.safehtml#safehtml;1.0-SNAPSHOT: not found
+-->
+		<dependency org="com.github.mvp4g" name="nalu" rev="1.0.0-SNAPSHOT"/>
+<!--		<dependency org="com.github.mvp4g" name="nalu-processor" rev="1.0.0-SNAPSHOT"/>-->
+		<dependency org="com.github.mvp4g" name="nalu-plugin-gwt" rev="1.0.0-SNAPSHOT"/>
+<!--		<dependency org="com.github.mvp4g" name="nalu-plugin-gwt-processor" rev="1.0.0-SNAPSHOT"/>-->
+        
+        <dependency org="com.ekotrope" name="gwt-completablefuture" rev="1.0.0"/>
+        
+        <dependency org="com.intendia.gwt.rxgwt2" name="rxgwt" rev="2.2" />
+
+        
+    </dependencies>
+</ivy-module>

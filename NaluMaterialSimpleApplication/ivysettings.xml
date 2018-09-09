@@ -1,0 +1,24 @@
+<ivysettings>
+  <settings defaultResolver="chain"/>
+
+    <resolvers>
+      <chain name="chain">
+
+   			<ibiblio name="central" m2compatible="true" /> 
+ 
+ <!-- Para las dependencias que fallen por que intenta bajar un .gwt-lib en lugar de un jar
+ hay que comentar el central normal y descomentar este otro, resolver dependencias y volver 
+ a dejarlo como estaba. TODO: investigar para que no tener que usar este workaround.-->
+<!--    			<ibiblio name="central" m2compatible="true"
+				root="https://repo1.maven.org/maven2/" 
+				pattern="[organisation]/[module]/[revision]/[artifact]-[revision].jar"/> 
+ -->
+
+			<ibiblio name="oss.sonatype.org" m2compatible="true"
+				root="https://oss.sonatype.org/content/repositories/snapshots/" />
+
+			<ibiblio name="raw.githubusercontent.com" m2compatible="true"
+				root="https://raw.githubusercontent.com/intendia-oss/rxjava-gwt/mvn-repo/" />
+    </chain>
+  </resolvers>
+</ivysettings>
