@@ -29,7 +29,7 @@
 
   <properties>
     <!-- Convenience property to set the GWT version -->
-    <gwtVersion>2.8.2</gwtVersion>
+    <gwtVersion>2.8.2-rx1</gwtVersion>
 
     <!-- GWT-Material version -->
     <gwt-material.version>2.1.1</gwt-material.version>
@@ -53,7 +53,7 @@
 
     <generated.source.directory>${project.build.directory}/generated-sources/annotations</generated.source.directory>
   </properties>
-
+  
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -144,6 +144,14 @@
     <artifactId>gwt-completablefuture</artifactId>
     <version>1.0.0</version>
     </dependency>
+    
+    <dependency>
+	  <groupId>com.intendia.gwt.rxgwt2</groupId>
+	  <artifactId>rxgwt</artifactId>
+	  <version>2.2</version>
+	  <type>gwt-lib</type>
+	</dependency>
+
   </dependencies>
 
   <build>
@@ -310,5 +318,12 @@
         <checksumPolicy>fail</checksumPolicy>
       </snapshots>
     </repository>
+      
+    <repository>
+	  <id>rxjava-gwt-repo</id>
+	  <url>https://raw.githubusercontent.com/intendia-oss/rxjava-gwt/mvn-repo/</url>
+    </repository>
+   
+    
   </repositories>
 </project>

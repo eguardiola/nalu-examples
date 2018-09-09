@@ -30,16 +30,21 @@ public class DashboardController extends
     public void doRefresh() {
     	MaterialLoader.progress(true);
     	
-    	CompletableFuture<List<FlightHoursSummary>> cf1 = this.context.getFakedService().getFlightHoursSummaries();
+//    	CompletableFuture<List<FlightHoursSummary>> cf1 = this.context.getFakedService().getFlightHoursSummaries();
     	
 //    	cf1.thenAccept(r -> {
 //    		DashboardController.this.component.updateFlightHourSummaryTable(r);
 //    		MaterialLoader.progress(false);
 //    	});
     	
-    	CompletableFuture.allOf(cf1).thenAccept(dummy -> {
-    		DashboardController.this.component.updateFlightHourSummaryTable(cf1.join());
+//    	CompletableFuture.allOf(cf1).thenAccept(dummy -> {
+//    		DashboardController.this.component.updateFlightHourSummaryTable(cf1.join());
+//    		MaterialLoader.progress(false);
+//    	});   
+    	
+    	this.context.getFakedService().getFlightHoursSummaries_rx().subscribe(next -> {
+    		DashboardController.this.component.updateFlightHourSummaryTable(next);
     		MaterialLoader.progress(false);
-    	});    	
+    	});
     }
 }

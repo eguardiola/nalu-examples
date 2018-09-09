@@ -25,8 +25,7 @@ import com.google.gwt.core.client.Scheduler;
 
 import de.gishmo.gwt.example.nalu.simpleapplication.client.data.BeanFactory;
 import de.gishmo.gwt.example.nalu.simpleapplication.client.data.model.dto.FlightHoursSummary;
-import de.gishmo.gwt.example.nalu.simpleapplication.client.ui.dashboard.DashboardController;
-import gwt.material.design.client.ui.MaterialLoader;
+import io.reactivex.Observable;
 
 public class FakedService {
 
@@ -65,6 +64,25 @@ public class FakedService {
     	}, 1500);
 		
 		return cf;
+	}
+	
+	public Observable<List<FlightHoursSummary>> getFlightHoursSummaries_rx() {
+		
+		Observable<List<FlightHoursSummary>> r = Observable.create(subscriber -> {
+			
+	    	Scheduler.get().scheduleFixedDelay(() -> {
+	    		if (!subscriber.isDisposed()) {
+		    		subscriber.onNext(summaries);
+		    		subscriber.onComplete();
+	    		}
+
+	    		return false;
+	    	}, 1500);
+	    	
+		});
+		
+		return r;
+		
 	}
 
 }

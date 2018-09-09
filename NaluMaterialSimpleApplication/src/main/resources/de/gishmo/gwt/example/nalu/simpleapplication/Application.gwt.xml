@@ -36,6 +36,8 @@
   <inherits name="gwt.material.design.addins.GwtMaterialAddins"/>
   
   <inherits name='com.ekotrope.gwt.CompletableFuture'/>
+  
+  <inherits name='com.intendia.rxgwt2.RxGwt'/>
 
 
   <!-- Specify the app entry point class.                         -->
